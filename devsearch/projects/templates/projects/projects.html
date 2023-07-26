@@ -2,4 +2,19 @@
 
 {% block content %}
 <h1>Projectttsss</h1>
+<p>
+    {% if number > 10 %}
+    number is more than 10
+    {% elif number == 10 %}
+    number is 10
+    {% else %}
+    number is less than 10
+    {% endif %}
+</p>
+
+<ul>
+{% for project in projects %}
+    <li> <a href="{% url 'project' project.id %}">{{ project.title }}</a> --- {{ project.description }}</li>
+{% endfor %}
+</ul>
 {% endblock %}
