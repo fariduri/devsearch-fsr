@@ -21,7 +21,18 @@ projectsList = [
 
 # Create your views here.
 def projects(request):
-    return render(request, 'projects/projects.html')
+    page = 'projects'
+    number = 10
+    context = {'projects': projectsList}
+
+    return render(request, 'projects/projects.html', context)
 
 def project(request, pk):
-    return render(request, 'projects/single-project.html')
+    projectObj = None
+    for project in projectsList:
+        if project['id'] == pk:
+            projectObj = project
+            break
+
+    context = {'project': projectObj}
+    return render(request, 'projects/single-project.html', context)
